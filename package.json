@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "nodemon --legacy-watch --watch src --watch website -e js,md,css src/index.js",
+    "build": "nodemon --legacy-watch --watch src --watch website -e js,md,css,html src/index.js",
     "serve": "node staticServer.js"
   },
   "type": "module",

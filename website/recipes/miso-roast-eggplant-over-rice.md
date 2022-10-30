@@ -1,6 +1,6 @@
 # Miso Roast Eggplant
 
-![Miso Eggplant](/images/miso-eggplant.jpg)
+![Miso Eggplant](../images/miso-eggplant.jpg)
 
 Taught this by a friend, incredibly simple. Here are some other people [making it way over complicated](https://www.pantsdownapronson.com/miso-baked-eggplant-nasu-dengaku/)
 
@@ -14,7 +14,7 @@ You're going to lightly fry half-eggplants, then smear them with a salty sweet s
 
 Split a large eggplant lengthwise, and score the face of it with some cross hatched pattern.
 
-Mix up enough sauce to coat the face of each eggplant, totally up to you and a great thing to experiment with. 
+Mix up enough sauce to coat the face of each eggplant. Ratio-wise go with more umami than sweet and sour, but it's all up to you. You can even throw in some chili flakes or pepper here.
 
 Fry in a large frying pan that you have a cover for on medium heat. Flip over to cook on the skin side every few minutes. When they are face up make sure to have the pan covered for extra steam.
 
@@ -26,16 +26,17 @@ Sever laid over the rice, if done well they are basically their own sauce enough
 - 1/2 a large eggplant per person
 - rice, 1/2 a cup per person preferably short grain sushi rice or something
 
-### Umami Sauce (pick 1)
+## For the Sauce
+Umami (pick 1)
 - miso paste (japanese)
 - fermented soybean paste (korean)
 - Doubanjiang (fermented chili bean paste, though maybe dilute this)
 
-### Sweet Sauce (pick 0-1)
+Sweet (pick 1)
 - black soy sauce (molases basically)
 - hoisin sauce
 
-### Sour Sauce (pick 0-1)
+Sour (pick 0-1)
 - chinkiang vinegar
 - rice vinegar (or mirin, but be aware mirin also counts as sweet!)
 

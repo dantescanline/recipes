@@ -9,11 +9,10 @@ const recipesPath = './website/recipes'
 
 var md = new Remarkable();
 
-
 async function cleanDist() {
-  return
   await new Promise((resolve, reject) => {
-    exec('cp -r website/images/ dist/', () => {
+    exec('rm -r dist', () => {
+      console.log('deleted')
       resolve()
     });
   })
@@ -43,7 +42,7 @@ async function findAllRecipes() {
 async function renderRecipes() {
   const recipes = await findAllRecipes()
 
-  // for homepage
+  // for index page
   let listString = ''
 
   for (const fileObj of recipes) {
@@ -89,10 +88,13 @@ async function renderPageOut(markdown, filename, isRecipe) {
 }
 
 // ---------- run it!
+async function main() {
 
-cleanDist()
-renderRecipes()
-copyStaticFiles()
-console.log(' ')
-console.log(`Memory used: ${(process.memoryUsage().rss / 1000000).toFixed(1)} MB`)
-console.log('✔️  build succceed')
+  await cleanDist()
+  await renderRecipes()
+  await copyStaticFiles()
+  console.log(' ')
+  console.log(`Memory used: ${(process.memoryUsage().rss / 1000000).toFixed(1)} MB`)
+  console.log('✔️  build succceed')
+}
+main()

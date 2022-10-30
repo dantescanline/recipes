@@ -1,6 +1,6 @@
 # Squash and chickpeas
 
-![Squash](/images/squash-and-chickpeas.webp)
+![Squash](../images/squash-and-chickpeas.webp)
 
 This is an ottolenghi one, [found here originally](https://www.theguardian.com/lifeandstyle/2016/nov/12/squash-pumpkin-recipes-yotam-ottolenghi-gnocchi-braised-mash-butternut-coquina-queen)
 

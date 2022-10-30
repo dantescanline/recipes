@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "nodemon --legacy-watch --watch src --watch website -e js,md,css src/index.js",
+    "serve": "node staticServer.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "remarkable": "^2.0.1"
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
   }
 }

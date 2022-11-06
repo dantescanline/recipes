@@ -45,19 +45,37 @@ async function renderRecipes() {
   // for index page
   let listString = ''
 
+  let pages = []
+
   for (const fileObj of recipes) {
     const f = await fs.readFile(fileObj.path, 'utf-8')
-    listString += `- [${kebabToTitle(fileObj.name)}](recipes/${fileObj.name}.html)\n`
+    pages.push({
+      title: kebabToTitle(fileObj.name),
+      path: `recipes/${fileObj.name}.html`,
+      image: scrapeHeaderImage(f)
+    })
+    scrapeHeaderImage(f)
     await renderPageOut(f, fileObj.name, true)
   }
 
+  listString += '<div id="page-header-container">'
+  for (const page of pages) {
+    listString += `<a href="${page.path}">`
+    listString += `<div class="page-header" style="background-image: url(images/${page.image})"><div class="text">${page.title}</div></div>`
+    listString += '</a>'
+  }
+  listString += '</div>'
+
+  let remaining = '- stir fried rice varieties\n- rissotos, mushroom\n- bibimbap stuff\n- bahn mi stuffs (pickles)\n- chinese clear sauce stir fry of 2/3 things\n- really good nachos\n- shepards pie\n- eggplant parm'
+  listString += '<h2>Future Recipes</h2>' + md.render(remaining)
   // index page
-  renderPageOut("# Recipes\n" + listString, 'index', false)
+  renderPageOut("<h1>Recipes</h1><p>Preserving all the recipes I know and love, so when dinner time comes I don't panic and choose death over a delicious meal.</p>" + listString, 'index', false, true)
 }
 
 // for css etc
 async function copyStaticFiles() {
   await fs.copyFile('./website/style.css', './dist/style.css')
+  await fs.copyFile('./website/util.js', './dist/util.js')
   await fs.copyFile('./website/Nunito-VariableFont_wght.ttf', './dist/Nunito-VariableFont_wght.ttf')
 
   await new Promise((resolve, reject) => {
@@ -73,10 +91,15 @@ function kebabToTitle(input) {
   return pieces.join(' ')
 }
 
-async function renderPageOut(markdown, filename, isRecipe) {
+async function renderPageOut(markdown, filename, isRecipe, isHTML) {
   let page = await getWrapper()
 
-  const render = md.render(markdown)
+  let render = ''
+  if (isHTML) {
+    render = markdown
+  } else {
+    render = md.render(markdown)
+  }
   page = page.replace('{{style-path}}', isRecipe ? '../style.css' : 'style.css')
   page = page.replace('{{title}}', kebabToTitle(filename))
   page = page.replace('{{footer}}', `Page rendered at ${new Date().toISOString()}`)
@@ -87,14 +110,28 @@ async function renderPageOut(markdown, filename, isRecipe) {
   await fs.writeFile(path + filename + '.html', page)
 }
 
+
+function scrapeHeaderImage(input) {
+  const reggie = /\.\.\/images\/(.*\.(?:png|jpe*g|webp))/i
+  const result = input.match(reggie)
+  if (result && result.length > 0) {
+    console.log(result[1])
+    return result[1]
+  }
+
+  return ''
+}
+
 // ---------- run it!
 async function main() {
-
+  console.time('time')
   await cleanDist()
   await renderRecipes()
   await copyStaticFiles()
   console.log(' ')
   console.log(`Memory used: ${(process.memoryUsage().rss / 1000000).toFixed(1)} MB`)
+  console.timeEnd('time')
   console.log('✔️  build succceed')
 }
+
 main()

@@ -54,3 +54,32 @@ a:hover {
   margin-top: 80px;
   padding: 20px;
 }
+
+#page-header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.page-header {
+  height: 250px;
+
+  background-size: cover;
+  text-align: center;
+  vertical-align: middle;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-header .text {
+  width: 80%;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 2px black;
+}
+
+#page-header-container a {
+  color: rgb(252, 252, 252) !important;
+  text-decoration: none;
+}
